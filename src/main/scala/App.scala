@@ -1,6 +1,6 @@
 
-import aoc.Day1._
-import aoc.Day2._
+import aoc.Day1.Day1
+import aoc.Day2.Day2
 
 object App {
 
