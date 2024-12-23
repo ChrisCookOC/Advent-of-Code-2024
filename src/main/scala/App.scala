@@ -1,6 +1,7 @@
 
 import aoc.Day1.Day1
 import aoc.Day2.Day2
+import aoc.Day3.Day3
 
 object App {
 
@@ -16,8 +17,9 @@ object App {
 
     whichDayToRun match {
       case "1" => Day1().run()
-      case _ => Day2().run()
-//      case "3" => Day3().run()
+      case "2" => Day2().run()
+      case "3" => Day3().run()
+      case _ => Day3().run()
 //      case "4" => Day4().run()
 //      case "5" => Day5().run()
 //      case "6" => Day6().run()
