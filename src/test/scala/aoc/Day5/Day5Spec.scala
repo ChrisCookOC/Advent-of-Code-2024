@@ -168,5 +168,107 @@ class Day5Spec extends AnyWordSpec with Matchers {
     }
   }
 
+  "swapNumbers" should {
+
+    "really simple example" in {
+
+      val list = List(43, 3)
+
+      day5.swapNumbers(list, Instruction(3, 43)) mustBe List(3, 43)
+
+    }
+  }
+
+  "fixListReturnMiddleIfInvalidElseReturn0" should {
+
+    "return zero if no change needed" in {
+
+      val instructions =
+        List(Instruction(3, 43), Instruction(3, 61), Instruction(43, 61))
+      val list = List(3, 43, 61)
+
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        list,
+        instructions
+      ) mustBe 0
+
+    }
+
+    "return middle after rearranging one number" in {
+
+      val instructions =
+        List(Instruction(3, 43), Instruction(3, 61), Instruction(43, 61))
+      val list = List(43, 3, 61)
+
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        list,
+        instructions
+      ) mustBe 43
+
+    }
+
+    "return middle after rearranging all numbers" in {
+
+      val instructions =
+        List(Instruction(3, 43), Instruction(3, 61), Instruction(43, 61))
+      val list = List(61, 3, 43)
+
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        list,
+        instructions
+      ) mustBe 43
+
+    }
+
+    "return middle after one pass that broke multiple rules" in {
+
+      val instructions =
+        List(
+          Instruction(3, 43),
+          Instruction(3, 61),
+          Instruction(43, 61),
+          Instruction(61, 44),
+          Instruction(44, 88)
+        )
+      val list = List(43, 3, 88, 61, 44)
+
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        list,
+        instructions
+      ) mustBe 61
+
+    }
+
+    "their example row 4" in {
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        List(75, 97, 47, 61, 53),
+        instructions
+      ) mustBe 47
+    }
+
+    "their example row 5" in {
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        List(61, 13, 29),
+        instructions
+      ) mustBe 29
+    }
+
+    "their example row 6" in {
+      day5.fixListReturnMiddleIfInvalidElseReturn0(
+        List(97, 13, 75, 29, 47),
+        instructions
+      ) mustBe 47
+    }
+
+  }
+
+  "sumMiddlePagesOfInvalidListsAfterFixing" should {
+
+    "do that" in {
+
+      day5.sumMiddlePagesOfInvalidListsAfterFixing(input) mustBe 123
+
+    }
+  }
 
 }
