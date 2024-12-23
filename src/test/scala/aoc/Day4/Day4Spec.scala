@@ -43,4 +43,17 @@ class Day4Spec extends AnyWordSpec with Matchers {
 
   }
 
+  "countCrossMas" should {
+
+    "count how many times it says MAS in a cross" in {
+
+      val input = "MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX"
+
+      day4.countCrossMas(input) mustBe 9
+
+    }
+
+
+  }
+
 }

@@ -3,6 +3,53 @@ package aoc.Day4
 import scala.io.Source
 
 case class Day4() {
+  def countCrossMas(input: String): Int = {
+    val lines = input
+      .split("\n")
+
+    val sizeX = lines.head.length
+    val sizeY = lines.size
+
+    val map = lines.zipWithIndex
+      .flatMap(line =>
+        line._1
+          .split("")
+          .zipWithIndex
+          .map(x => (x._2, line._2) -> x._1)
+      )
+      .toMap
+
+    //Lookin' for As so pointless if they are at the edge
+    (for {
+      i <- 1 until sizeX -1
+      j <- 1 until sizeY - 1
+      if map(i, j) == "A"
+      if isLeftToRight(map, i, j)
+      if isRightToLeft(map, i, j)
+    } yield 1).size
+
+  }
+
+  private def isLeftToRight(
+      map: Map[(Int, Int), String],
+      i: Int,
+      j: Int
+  ): Boolean =
+    (map(i - 1, j - 1) == "M" && map(i + 1, j + 1) == "S") || (map(
+      i - 1,
+      j - 1
+    ) == "S" && map(i + 1, j + 1) == "M")
+
+  private def isRightToLeft(
+      map: Map[(Int, Int), String],
+      i: Int,
+      j: Int
+  ): Boolean =
+    (map(i + 1, j - 1) == "M" && map(i - 1, j + 1) == "S") || (map(
+      i + 1,
+      j - 1
+    ) == "S" && map(i - 1, j + 1) == "M")
+
   def countXmas(input: String): Int = {
 
     val lines = input
@@ -92,9 +139,9 @@ case class Day4() {
 
     println(s"Result is $result")
 
-//    val result2 = findWithConditionals(commands)
-//
-//    println(s"Result is $result2")
+    val result2 = countCrossMas(input)
+
+    println(s"Result is $result2")
   }
 
 }
