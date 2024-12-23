@@ -1,9 +1,17 @@
 package aoc.Day1
 
-import java.net.URL
-import scala.io.{BufferedSource, Source}
+import scala.io.Source
 
 case class Day1() {
+  def calculateSimilarityScore(leftList: List[Int], rightList: List[Int]): Int = {
+
+    val sortedRightList = rightList.sorted
+
+    leftList.map(value => sortedRightList.count(x => x==value) * value)
+      .sum
+
+  }
+
   def getDistance(leftList: List[Int], rightList: List[Int]): Int = {
 
     val sortedLeftList = leftList.sorted
@@ -29,6 +37,10 @@ case class Day1() {
     val result = getDistance(lists._1, lists._2)
 
     println(s"Distance is $result")
+
+    val similarityScore = calculateSimilarityScore(lists._1, lists._2)
+
+    println(s"Similarity Score is $similarityScore")
   }
 
 }
