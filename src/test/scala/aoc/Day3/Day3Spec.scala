@@ -15,6 +15,16 @@ class Day3Spec extends AnyWordSpec with Matchers {
 
       day3.findUncorruptedMuls(sample) mustBe 161
 
+    }
+
+  }
+
+  "findWithConditionals" should {
+
+    "pay attention to dos and donts" in {
+      val sample = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+
+      day3.findWithConditionals(sample) mustBe 48
 
     }
 
