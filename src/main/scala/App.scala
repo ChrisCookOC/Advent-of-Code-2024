@@ -4,6 +4,7 @@ import aoc.Day2.Day2
 import aoc.Day3.Day3
 import aoc.Day4.Day4
 import aoc.Day5.Day5
+import aoc.Day6.Day6
 
 object App {
 
@@ -23,8 +24,7 @@ object App {
       case "3" => Day3().run()
       case "4" => Day4().run()
       case "5" => Day5().run()
-//      case "5" => Day5().run()
-//      case "6" => Day6().run()
+      case "6" => Day6().run()
 //      case "7" => Day7().run()
 //      case "8" => Day8().run()
 //      case "9" => Day9().run()
